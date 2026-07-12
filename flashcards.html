@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Flashcards</title>
+<style>
+body{font-family:Arial;margin:0;background:#f4f4f4;text-align:center}
+#card{margin:20px auto;max-width:900px;cursor:pointer}
+img{max-width:90vw;max-height:75vh;border:1px solid #999;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+button{margin:8px;padding:10px 18px;font-size:16px}
+</style></head><body>
+<h2>Flashcards</h2>
+<div><button onclick="prev()">Previous</button><button onclick="flip()">Flip</button><button onclick="next()">Next</button><button onclick="shuffle()">Shuffle</button></div>
+<div id="card"><img id="img"></div>
+<script>
+const cards=[
+{front:"fronts/front ADOPT A GRANDPARENT.jpg",back:"backs/back ADOPT A GRANDPARENT.jpg"},
+{front:"fronts/front CREATE A ROOM.jpg",back:"backs/back CREATE A ROOM.jpg"},
+{front:"fronts/front CREATE A SOCIAL MEDIA ACCOUNT.jpg",back:"backs/back CREATE A SOCIAL MEDIA ACCOUNT.jpg"},
+{front:"fronts/front CoworkingSpace.jpg",back:"backs/Back CoworkingSpace.jpg"},
+{front:"fronts/front FurryFriends.jpg",back:"backs/Back FurryFriends.jpg"},
+{front:"fronts/front HOST A BLOCK PARTY.jpg",back:"backs/back HOST A BLOCK PARTY.jpg"},
+{front:"fronts/front HOST A CLUB.jpg",back:"backs/back HOST A CLUB.jpg"},
+{front:"fronts/front HOST A CONCERT.jpg",back:"backs/back HOST A CONCERT.jpg"},
+{front:"fronts/front HOST A FASHION SHOW.jpg",back:"backs/back HOST A FASHION SHOW.jpg"},
+{front:"fronts/front HOST A GENRE BOOKCLUB.jpg",back:"backs/back HOST A GENRE BOOKCLUB.jpg"},
+{front:"fronts/front HOST A MENTOR PROGRAM.jpg",back:"backs/back HOST A MENTOR PROGRAM.jpg"},
+{front:"fronts/front HOST A MUNCH AND MUSIC.jpg",back:"backs/back HOST A MUNCH AND MUSIC.jpg"},
+{front:"fronts/front HOST A SCHOOL NIGHT.jpg",back:"backs/back HOST A SCHOOL NIGHT.jpg"},
+{front:"fronts/front HOST A SEASONAL ACTIVITY.jpg",back:"backs/back HOST A SEASONAL ACTIVITY.jpg"},
+{front:"fronts/front HOST A SOFT SKILLS CLASS.jpg",back:"backs/back HOST A SOFT SKILLS CLASS.jpg"},
+{front:"fronts/front HOST A TRIVIA NIGHT.jpg",back:"backs/back HOST A TRIVIA NIGHT.jpg"},
+{front:"fronts/front JOURNALING CLASS.jpg",back:"backs/back JOURNALING CLASS.jpg"},
+{front:"fronts/front MusicClasses.jpg",back:"backs/Back MusicClasses.jpg"},
+{front:"fronts/front THEMED FESTIVAL.jpg",back:"backs/back THEMED FESTIVAL.jpg"},
+{front:"fronts/front THEMED YOGA.jpg",back:"backs/back THEMED YOGA.jpg"},
+{front:"fronts/front TextileCrafts.jpg",back:"backs/Back TextileCrafts.jpg"},
+{front:"fronts/front UPDATE SOCIAL MEDIA.jpg",back:"backs/back UPDATE SOCIAL MEDIA.jpg"},
+{front:"fronts/front Volunteersocial.jpg",back:"backs/Back Volunteersocial.jpg"},
+{front:"fronts/front adventure.png",back:"backs/back adventure.png"},
+{front:"fronts/front backtoschool.jpg",back:"backs/Back backtoschool.jpg"},
+{front:"fronts/front baking.png",back:"backs/back baking.png"},
+{front:"fronts/front communityart.jpg",back:"backs/Back communityart.jpg"},
+{front:"fronts/front cooking.png",back:"backs/back cooking.png"},
+{front:"fronts/front farmers.jpg",back:"backs/back farmers.jpg"},
+{front:"fronts/front game night.jpg",back:"backs/back game night.jpg"},
+{front:"fronts/front hollywood.png",back:"backs/back hollywood.png"},
+{front:"fronts/front language.jpg",back:"backs/back language.jpg"},
+{front:"fronts/front lifeskills.png",back:"backs/back lifeskills.png"},
+{front:"fronts/front line dance.jpg",back:"backs/back line dance.jpg"},
+{front:"fronts/front localbusinesses.jpg",back:"backs/Back localbusinesses.jpg"},
+{front:"fronts/front new residents.jpg",back:"backs/back new residents.jpg"},
+{front:"fronts/front parenting skills.jpg",back:"backs/back parenting skills.jpg"},
+{front:"fronts/front swaps.jpg",back:"backs/back swaps.jpg"},
+{front:"fronts/front travel.png",back:"backs/back travel.png"},
+{front:"fronts/front wellness.jpg",back:"backs/back wellness.jpg"},
+];
+let order=[...cards.keys()];
+let idx=0,showFront=true;
+function show(){document.getElementById('img').src=showFront?cards[order[idx]].front:cards[order[idx]].back;}
+function flip(){showFront=!showFront;show();}
+function next(){idx=(idx+1)%order.length;showFront=true;show();}
+function prev(){idx=(idx-1+order.length)%order.length;showFront=true;show();}
+function shuffle(){for(let i=order.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}idx=0;showFront=true;show();}
+document.getElementById('card').onclick=flip;
+show();
+</script></body></html>
